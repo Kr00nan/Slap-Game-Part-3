@@ -1,7 +1,7 @@
 
 // Creates the target
 var target = {
-    name: "logo",
+    name: "name",
     health: 100,
     equipment: []
 }
@@ -15,9 +15,9 @@ var Obj = function(name, modifier, description){
 
 // Creates the items to be added to the target
 var items = {
-    shield:new Obj("Shield",0.9,"...I'm pretty sure this is just a pot lid..."),
-    potion:new Obj("Potion",0.8,"The label reads: Baby Tears"),
-    sword:new Obj("Sword",0.5,"The glowing runes along the blade translate thusly, \"Nacho Sword...as in: it's not yours...\"")
+    shield:new Obj("Shield",1,"I'm pretty sure this is a pot lid..."),
+    potion:new Obj("Potion",2,"Tastes like watered down orange Gatorade..."),
+    sword:new Obj("Sword",2,"It's a sword. Don't touch the pointy end.")
 }
 
 // Grabs the 'Health' label from HTML
@@ -65,3 +65,15 @@ function update(health) {
     hp.textContent = health;
     round.textContent = hits;
 }
+
+// Reset the bad guy to initial properties NEEDS WORK!
+function reset() {
+    target.health = 100;
+    hits = 0;
+    update(100);
+}
+
+// Allows for tooltips to appear above shield, potion, and sword.
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});

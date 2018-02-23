@@ -38,17 +38,22 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col text-center">
-					<img src="shield1.png" onclick="giveItem('shield')">
-					<img src="potion1.png" onclick="giveItem('potion')">
-					<img src="sword1.png" onclick="giveItem('sword')">
+			<div class="col">
+				<button class="btn btn-dark" onclick="reset()">Reset</button>
 			</div>
-			<div class="col"></div>
+			<div class="col text-center">
+					<img src="shield1.png" onclick="giveItem('shield')" data-toggle="tooltip" title="Is this a pot lid?">
+					<img src="potion1.png" onclick="giveItem('potion')" data-toggle="tooltip" title="Increase your damage by half!">
+					<img src="sword1.png" onclick="giveItem('sword')" data-toggle="tooltip" title="Double your damage!">
+			</div>
 			<div class="col"></div>
 			<div class="col"></div>
 		</div>
 	</div>
-	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="game.js"></script>
 </body>
 </html>
