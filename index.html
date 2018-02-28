@@ -7,21 +7,24 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="game.css">
 	<title>Slap Object Game</title>
+	<style>
+
+	div {
+		border: solid 1px black;
+	}
 	
+	</style>
 </head>
 <body>
 	<div class="container bgpic">
-		<!-- <div class="row"></div> -->
 		<div class="row">
 			<div class="col">
 				<div class="row">
-					<button onclick="attack(1)" class="btn btn-circle btn-primary">Slap</button>
-				</div>
-				<div class="row">
-					<button onclick="attack(5)" class="btn btn-circle btn-danger">Punch</button>
-				</div>
-				<div class="row">
-					<button onclick="attack(10)" class="btn btn-circle btn-warning">Kick</button>
+					<div class="col">
+						<button onclick="attack('slap')" class="btn">Slap</button>
+						<button onclick="attack('kick')" class="btn">Kick</button>
+						<button onclick="attack('punch')" class="btn">Punch</button>
+					</div>
 				</div>
 			</div>
 			<div class="col"></div>
@@ -50,9 +53,7 @@
 			<div class="col"></div>
 		</div>
 	</div>
-	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="game.js"></script>
 </body>

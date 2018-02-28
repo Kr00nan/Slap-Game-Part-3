@@ -1,7 +1,7 @@
 
 // Creates the target
 var target = {
-    name: "name",
+    name: "Crotchity Old man",
     health: 100,
     equipment: []
 }
@@ -53,27 +53,32 @@ function attack(dmg) {
     addMods();
     target.health -= dmg * totalMod;
     hits++;
-    update(target.health.toFixed(2));
+    update();
 }
 
 // Update function to update 'Health' and 'Hits Taken'
-function update(health) {
+function update() {
     if (target.health <= 0) {
-        health = 0;
+        target.health = 0;
     }
 
-    hp.textContent = health;
+    hp.textContent = target.health.toFixed(2);
     round.textContent = hits;
 }
 
-// Reset the bad guy to initial properties NEEDS WORK!
+// Reset the bad guy to initial properties!
 function reset() {
     target.health = 100;
     hits = 0;
-    update(100);
+    update();
 }
 
 // Allows for tooltips to appear above shield, potion, and sword.
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
+// $(document).ready(function(){
+//     $('[data-toggle="tooltip"]').tooltip();   
+// });
+
+function GameService() {
+    var dataStore = this;
+
+}
