@@ -5,13 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="game.css">
+	<!-- <link rel="stylesheet" href="game.css"> -->
 	<title>Slap Object Game</title>
 	<style>
 
-	div {
+	/* div {
 		border: solid 1px black;
-	}
+	} */
 	
 	</style>
 </head>
@@ -21,20 +21,20 @@
 			<div class="col">
 				<div class="row">
 					<div class="col">
-						<button onclick="attack('slap')" class="btn">Slap</button>
-						<button onclick="attack('kick')" class="btn">Kick</button>
-						<button onclick="attack('punch')" class="btn">Punch</button>
+						<button onclick="GameController.attack('slap')" class="btn">1</button>
+						<button onclick="GameController.attack('kick')" class="btn">5</button>
+						<button onclick="GameController.attack('punch')" class="btn">10</button>
 					</div>
 				</div>
 			</div>
 			<div class="col"></div>
 			<div class="col"></div>
 			<div class="col text-center">
-				<img src="count1.png" alt="BLAP">
+				<!-- <img src="count1.png" alt="BLAP"> -->
 				<div class="card">
-					<div class="card-header text-center"><span id="name">Crotchity Old Man</span></div>
-					<div class="card-body">Health: <span id="health">100</span><br>
-						Hits Taken: <span id="counter">0</span>
+					<div class="card-header text-center"><span id="name"></span></div>
+					<div class="card-body">: <span id="health">100</span><br>
+						counter: <span id="counter">0</span>
 					</div>
 				</div>
 			</div>
@@ -45,9 +45,9 @@
 				<button class="btn btn-dark" onclick="reset()">Reset</button>
 			</div>
 			<div class="col text-center">
-					<img src="shield1.png" onclick="giveItem('shield')" data-toggle="tooltip" title="Is this a pot lid?">
-					<img src="potion1.png" onclick="giveItem('potion')" data-toggle="tooltip" title="Increase your damage by half!">
-					<img src="sword1.png" onclick="giveItem('sword')" data-toggle="tooltip" title="Double your damage!">
+					<!-- <img src="shield.png" onclick="giveItem('shield')" title="Shield"> -->
+					<!-- <img src="potion.png" onclick="giveItem('potion')" title="Potion"> -->
+					<img src="sword.png" onclick="giveItem('sword')" title="Sword">
 			</div>
 			<div class="col"></div>
 			<div class="col"></div>
