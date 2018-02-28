@@ -21,9 +21,9 @@
 			<div class="col">
 				<div class="row">
 					<div class="col">
-						<button onclick="GameController.attack('slap')" class="btn">1</button>
-						<button onclick="GameController.attack('kick')" class="btn">5</button>
-						<button onclick="GameController.attack('punch')" class="btn">10</button>
+						<button onclick="app.gameController.attack('slap')" class="btn">1</button>
+						<button onclick="app.gameController.attack('punch')" class="btn">5</button>
+						<button onclick="app.gameController.attack('kick')" class="btn">10</button>
 					</div>
 				</div>
 			</div>
@@ -33,8 +33,8 @@
 				<!-- <img src="count1.png" alt="BLAP"> -->
 				<div class="card">
 					<div class="card-header text-center"><span id="name"></span></div>
-					<div class="card-body">: <span id="health">100</span><br>
-						counter: <span id="counter">0</span>
+					<div class="card-body">: <span id="health"></span><br>
+						counter: <span id="counter"></span>
 					</div>
 				</div>
 			</div>
@@ -42,12 +42,12 @@
 		<hr>
 		<div class="row">
 			<div class="col">
-				<button class="btn btn-dark" onclick="reset()">Reset</button>
+				<button class="btn btn-dark" onclick="app.gameController.reset()">Reset</button>
 			</div>
 			<div class="col text-center">
 					<!-- <img src="shield.png" onclick="giveItem('shield')" title="Shield"> -->
 					<!-- <img src="potion.png" onclick="giveItem('potion')" title="Potion"> -->
-					<img src="sword.png" onclick="giveItem('sword')" title="Sword">
+					<img src="sword.png" onclick="app.gameController.giveItem('sword')" title="Sword">
 			</div>
 			<div class="col"></div>
 			<div class="col"></div>

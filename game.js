@@ -1,61 +1,58 @@
 
 
+// ENTRY POINT //////////////////////////////
+
+var app = {
+    gameController: new GameController()
+}
+
+
 // GAME CONTROLLER /////////////////////////
 
 function GameController() {
+
     var gameService = new GameService();
+
+    // Grabs the 'Name' label from the DOM
+    var tarName = document.getElementById('name');
+    // Grabs the 'Health' label from DOM
+    var tarHealth = document.getElementById('health');
+    // Grabs the 'Hits Taken' label from DOM
+    var tarHits = document.getElementById('counter');
 
     this.attack = function(type) {
         gameService.attack(type);
-        gameService.update();
-    } 
+        this.update();
+    }
+
+    this.giveItem = function(item) {
+        gameService.giveItem(item);
+    }
+
+    this.update = function() {
+        var targetCopy = gameService.getTarget();
+
+        if (targetCopy.health <= 0) {
+            targetCopy.health = 0;
+        }
+
+        tarName.textContent = targetCopy.name;
+        tarHealth.textContent = targetCopy.health.toFixed(2);
+        tarHits.textContent = targetCopy.hits;
+    }
+
+    this.reset = function() {
+        gameService.reset();
+        this.update();
+    }
 }
 
 // GAME SERVICE ////////////////////////////
 
 function GameService() {
-    // var dataStore = this;
-    var target = new target("Scarecrow", 100, 1, 5, 10);
 
-    // Grabs the 'Health' label from HTML
-    var hp = document.getElementById("health");
-    // Grabs the 'Hits Taken' label from HTML
-    var round = document.getElementById("counter");
-    // Aggregate modifier if items are applied to target
-    var totalMod = 1;
-    // 'Hits Taken' counter
-    var hits = 0;
-
-    // If user clicks on 'Shield', 'Potion', or 'Sword', this adds the items
-    // to the equipment array
-    function giveItem(loot){
-        // debugger
-        target.equipment.push(items[loot]);
-    }
-
-    // This function aggregates modifiers from target's equipment array, if any
-    function addMods(){
-        var total = 0;
-        for (let i = 0; i < target.equipment.length; i++) {
-            var item = target.equipment[i];
-            total += item.modifier;
-        }
-        if (total != 0) {
-            totalMod = total;
-        }
-    }
-
-    // Update function to update 'Health' and 'Hits Taken'
-    function update() {
-
-    }
-
-    // Reset the bad guy to initial properties!
-    function reset() {
-        target.health = 100;
-        hits = 0;
-        update();
-    }
+    var target = new Target("Scarecrow", 100, 1, 5, 10);
+    var defaultMod = 1;
 
     // Opponent constructor
     function Target(name, health, slap, punch, kick) {
@@ -66,46 +63,59 @@ function GameService() {
             "punch": punch,
             "kick": kick
         };
-        this.items = [];
         this.hits = 0;
     }
 
     // Item constructor
-    function Item(name, modifier, description) {
+    function Item(name, modifier, description, equipped) {
         this.name = name;
         this.modifier = modifier;
         this.description = description;
+        this.equipped = equipped;
     }
 
     // Creates the items
-    var items = {
-        shield:new Item("Shield",1,"I'm pretty sure this is a pot lid..."),
-        potion:new Item("Potion",2,"Tastes like watered down orange Gatorade..."),
-        sword:new Item("Sword",2,"It's a sword. Don't touch the pointy end.")
+    var belt = {
+        shield:new Item("Shield",1,"I'm pretty sure this is a pot lid...", false),
+        potion:new Item("Potion",2,"Tastes like watered down blue Gatorade...", false),
+        sword:new Item("Sword",2,"It's a sword. Don't touch the pointy end.", false)
     }
 
-    // Applies damage to opponents health
-    // Increases hit counter
+    // Applies damage to opponents health; increases hit counter
     this.attack = function(type) {
         target.health -= target.attacks[type] * this.addMods();
         target.hits += 1;
     }
 
+    this.giveItem = function(item) {
+        belt[item].equipped = true;
+    }
+
     // Adds any modifiers from items being used
     // Currently set to 1, so this function needs work
     this.addMods = function() {
-        return 1;
-    }
-
-    this.update = function() {
-        var targetCopy = target;
-
-        if (targetCopy.health <= 0) {
-            targetCopy.health = 0;
+        if (belt['sword'].equipped) {
+            return belt['sword'].modifier;
+        } else {
+            return defaultMod;
         }
+    };
 
-        hp.textContent = targetCopy.health.toFixed(2);
-        round.textContent = targetCopy.hits;
+    this.getTarget = function() {
+        var targetCopy = {
+            name: target.name,
+            health: target.health,
+            hits: target.hits
+        };
+
+        return targetCopy;
+    };
+
+    this.reset = function() {
+        target = new Target("Scarecrow", 100, 1, 5, 10);
+        belt['sword'].equipped = false;
     }
 
 }
+
+app.gameController.reset();
